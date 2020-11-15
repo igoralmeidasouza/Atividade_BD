@@ -40,8 +40,6 @@
         echo "</div>";
     }
 
-
-
     if (isset($_GET['endereco'])){
         echo "<div class='container_endereco' style='padding-right: 30px;'>";
 
@@ -56,8 +54,6 @@
         echo "</div>";
     }
 
-
-    
     if (isset($_GET['bairro'])){
         echo "<div class='container_bairro' style='padding-right: 30px;'>";
 
@@ -72,8 +68,6 @@
         echo "</div>";
     }
 
-
-    
     if (isset($_GET['cidade'])){
         echo "<div class='container_cidade' style='padding-right: 30px;'>";
 
@@ -87,8 +81,6 @@
         echo "<br>";
         echo "</div>";
     }
-    
-
     
     if (isset($_GET['estado'])){
         echo "<div class='container_estado' style='padding-right: 30px;'>";
@@ -118,45 +110,18 @@
         }
         echo "</div>";
     }
+    if (isset($_POST['logout'])){
+    
+    //abrir a sessão
+	session_start();
+	//limpar a sessão
+	session_unset();
+	//destruir a sessão
+	session_destroy();
 
-// Tentativa falha de printar uma lista em array usando o Foreach. Não entendi ainda como funciona. 
-/*
-    if (isset($_GET['codigo'])){    
-        $sql = "SELECT codigo FROM db_clientes";
-        $consulta = mysqli_query($conexao,$sql);
-
-        while($clientes_array = mysqli_fetch_array($consulta)){
-            echo $clientes_array['codigo']."<br>";
-        }
+	//Enviando o usuário para o index.php
+	header('Location: login.php');
     }
-   
-    $lista = [[], [], [], [], [], []];
 
-    if (isset($_GET['nome'])){    
-        $sql = "SELECT nome,endereco FROM db_clientes";
-        $consulta = mysqli_query($conexao,$sql);
-
-        while($clientes_array = mysqli_fetch_array($consulta)){
-            echo array_push ($lista[0], $clientes_array['nome'],$clientes_array['endereco']);
-            print_r ($lista);
-            //$nome = [$clientes_array['nome']];
-        
-        //foreach ($nome as $lista) {
-          //  echo $valor."<br>";
-        //}
-    }
-    }   
-*/
-
-    // Teste para consultar ID
-    /*
-    $sql = "SELECT ID FROM db_clientes ORDER BY id DESC LIMIT 1";
-        $consulta = mysqli_query($conexao,$sql);
-
-        while($clientes_array = mysqli_fetch_array($consulta)){
-            $ID = $clientes_array['ID'];
-            echo $ID + 1;
-        }
-    */
     mysqli_close($conexao);
 ?>

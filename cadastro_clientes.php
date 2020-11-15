@@ -13,7 +13,7 @@
     <div class="header"><h2>Cadastro de Clientes</h2> </div>
     
     <div class="formulario-card">
-    <form name="cadastro" method="POST" action="POST_no_BD.php" >
+    <form name="cadastro" method="POST" action="resposta_cadastro.php" >
         <p class="form2">Nome</p>
         <input type="text" name="nome"class="form-campo">
 
@@ -63,10 +63,10 @@
         <p>Codigo</p> 
         <input type="text" name="codigo">-->
 
-        <br><br><input type="submit" value="Cadastrar" class="button2"> 
+        <br><br><input type="submit" value="Cadastrar" class="button2" name="cadastro"> 
         
     </form>
-    <a href="consulta.html"> <button class="button3"> Voltar</button> </a>
+    <a href="consulta.php"> <button class="button3"> Voltar</button> </a>
     </div>
 
     </div>

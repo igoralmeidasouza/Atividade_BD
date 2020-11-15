@@ -1,3 +1,19 @@
+<?php
+    require_once 'conexao.php';
+
+    session_start();
+
+    if(!isset($_SESSION['logado'])){
+        header('Location: Login.php');
+    }
+    $id_usu = $_SESSION['codUsu'];
+	$sql = "SELECT * FROM db_usuarios WHERE codUsu = '$id_usu'";
+	$resultado = mysqli_query($con, $sql);
+	$dados = mysqli_fetch_array($resultado);
+	mysqli_close($con);
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,14 +24,23 @@
     </head>
     <body> 
         <!-- --------------------- CONSULTAR TABELA ----------------------------- -->
-        <div class="mestre">
-            
+    <div class="log">
+        <div class="dropdown">
+        <button class="dropbtn"><?php echo $dados['nomeUsu']." "; ?>  <i class="arrow down"></i> </button>
+            <div class="dropdown-content">
+                <form method="POST" action="resposta_consulta.php" >
+                    <input value="Logout" type="submit" name="logout">
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mestre">
+
     <div class="container">
 
 
     <h1>Consulta</h1> 
-
- 
     
     <div class="consulta">
 
@@ -114,8 +139,10 @@
     <br><br><input class="button" type="submit" value="Alterar">
 
     </form>
-    </div>
-    <a href="cadastro_clientes.php"> <button class="button4"> NOVO CADASTRO</button></a>
+</div>
+<!-- ----------------------- IR PARA CADASTRO CLIENTES / USUARIOS --------------------------- -->
+    <a href="cadastro_clientes.php"> <button class="button4"> Cadastro Cliente</button></a>
+    <a href="cadastro_usuarios.php"> <button class="button4"> Cadastro Usuario</button></a>
     </div> 
     </div>
 </body>
